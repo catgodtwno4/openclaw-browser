@@ -1,4 +1,4 @@
-# OpenClaw Browser Operations Skill
+# OpenClaw 瀏覽器自動化 Skill
 
 > OpenClaw Agent 的瀏覽器自動化最佳實踐。涵蓋 Chrome Relay、AppleScript JS、Peekaboo 截圖、Playwright 無頭瀏覽器、web_search/web_fetch。
 
@@ -8,44 +8,31 @@
 
 ## 工具矩陣
 
-| 需求 | 工具 | 原因 |
-|------|------|------|
-| 搜索網路 | `web_search` | Brave API，最快 |
-| 讀取頁面內容 | `web_fetch` | URL → markdown |
-| 操作已登入的網站 | **Chrome Relay** | 帶用戶 cookies |
-| 快速讀取頁面標題/URL | **AppleScript** | 最快的簡單操作 |
-| 截圖驗證 | **Peekaboo** | macOS 原生截圖 |
-| 自動化測試/爬蟲 | **Playwright** | 無頭瀏覽器 |
+| 工具 | 用途 | 需要瀏覽器 |
+|------|------|-----------|
+| Chrome Relay (CDP) | 完整瀏覽器控制 | ✅ |
+| AppleScript JS | macOS 原生操作 | ✅ |
+| Peekaboo | 截圖 + OCR | ✅ |
+| Playwright | 無頭自動化 | 🔧 內建 |
+| web_search | 搜尋引擎 | ❌ |
+| web_fetch | 抓取網頁 | ❌ |
 
 ## 快速開始
 
 ```bash
-# 安裝到 OpenClaw
-cd ~/.openclaw/skills
-git clone https://github.com/catgodtwno4/openclaw-browser-skill.git ops-browser
+mkdir -p ~/.openclaw/skills/ops-browser
+cp SKILL.md ~/.openclaw/skills/ops-browser/
 ```
-
-## 核心功能
-
-### Chrome Relay（主力工具）
-- 使用用戶的 Chrome + cookies，能繞過 Cloudflare Turnstile
-- 通過 OpenClaw Browser Extension 連接
-- 支持：導航、點擊、填表、JS 執行、截圖
-
-### AppleScript JS（備用）
-- 直接操作用戶的 Chrome
-- 修復方法：寫入 Chrome Preferences `allow_javascript_apple_events = true`
-
-### 反偵測能力
-- Chrome Relay + AppleScript 不會被反自動化保護攔截
-- Playwright headless 會被 Cloudflare/reCAPTCHA 擋
 
 ## 相關倉庫
 
 | 倉庫 | 說明 |
 |------|------|
-| [openclaw-five-layer-memory-nas](https://github.com/catgodtwno4/openclaw-five-layer-memory-nas) | 五層記憶棧 NAS 部署 |
-| [openclaw-github-publish-skill](https://github.com/catgodtwno1/openclaw-github-publish-skill) | GitHub 發布 Skill |
+| [openclaw-lcm-setup](https://github.com/catgodtwno4/openclaw-lcm-setup) | LCM 安裝配置指南 |
+| [openclaw-dashboard](https://github.com/catgodtwno4/openclaw-dashboard) | OpenClaw 儀表板 |
+| [openclaw-five-layer-memory-nas](https://github.com/catgodtwno4/openclaw-five-layer-memory-nas) | 五層記憶棧 NAS 部署指南 |
+| [openclaw-im-control](https://github.com/catgodtwno4/openclaw-im-control) | 媒體傳送 Skill |
+| [lossless-claw](https://github.com/catgodtwno4/lossless-claw) | LCM 插件 Fork（含修復） |
 
 ## 許可證
 
